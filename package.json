@@ -11,18 +11,13 @@
 		"Debuggers"
 	],
 	"activationEvents": [
-		"onCommand:godot-rust-vscode.helloWorld"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"configuration": {
 			"title": "Godot-Rust",
 			"properties": {
-				"godot-rust.environment.autoGenerateTasks": {
-					"description": "Whether to auto-generate tasks for building and debugging godot-rust executables.  Disable if using custom tasks",
-					"type": "boolean",
-					"default": true
-				},
 				"godot-rust.environment.godotEditorPath": {
 					"description": "The absolute path to the Godot Editor, including executable name",
 					"type": "string",
@@ -32,6 +27,11 @@
 					"description": "The path to the Godot project directory. Both relative and absolute paths are accepted",
 					"type": "string",
 					"default": "${workspaceFolder}/../godot/"
+				},
+				"godot-rust.environment.makefilePath": {
+					"description": "The path to the godot-rust makefile directory. Both relative and absolute paths are accepted",
+					"type": "string",
+					"default": "${workspaceFolder}/../"
 				},
 				"godot-rust.build.targetPlatform": {
 					"description": "The target platform for this development environment",
@@ -53,7 +53,7 @@
 					]
 				},
 				"godot-rust.build.targetPlatformCustom": {
-					"description": "Custom target platform, when godot-rust.build.targetPlatform is set to 'custom'",
+					"description": "Target platform, when godot-rust.build.targetPlatform is set to 'custom'",
 					"type": "string",
 					"default": ""
 				}
@@ -70,19 +70,27 @@
 				"initialConfigurations": [
 					{
 						"name": "Debug Game",
-						"preLaunchTask": "Build Debug",
+						"preLaunchTask": "godot-rust: Build Debug",
 						"type": "lldb",
 						"request": "launch",
 						"program": "${config:godot-rust.environment.godotEditorPath}",
-						"cwd": "${config:godot-rust.environment.godotProjectPath}"
+						"cwd": "${config:godot-rust.environment.godotProjectPath}",
+						"presentation": { 
+							"group": "Debug",
+							"order": 1
+						}
 					},
 					{
 						"name": "Release Game",
-						"preLaunchTask": "Build Release",
+						"preLaunchTask": "godot-rust: Build Release",
 						"type": "lldb",
 						"request": "launch",
 						"program": "${config:godot-rust.environment.godotEditorPath}",
-						"cwd": "${config:godot-rust.environment.godotProjectPath}"
+						"cwd": "${config:godot-rust.environment.godotProjectPath}",
+						"presentation": { 
+							"group": "Debug",
+							"order": 2
+						}
 					},
 					{
 						"name": "Attach to Game",
@@ -91,18 +99,19 @@
 						"request": "attach",
 						"program": "${config:godot-rust.environment.godotEditorPath}",
 						"port": 6007,
-						"presentation": {
-							"group": "Attach"
+						"presentation": { 
+							"group": "Debug",
+							"order": 3
 						}
 					}
 				],
 				"configurationSnippets": [
 					{
-						"label": "godot-rust: Debug Configuration",
+						"label": "godot-rust: Launch Debug Game",
 						"description": "A new configuration for launching and debugging a godot-rust executable",
 						"body": {
 							"name": "Debug Game",
-							"preLaunchTask": "Build Debug",
+							"preLaunchTask": "godot-rust: Build Debug",
 							"type": "lldb",
 							"request": "launch",
 							"program": "${config:godot-rust.environment.godotEditorPath}",
@@ -110,11 +119,11 @@
 						}
 					},
 					{
-						"label": "godot-rust: Release Configuration",
+						"label": "godot-rust: Launch Release Game",
 						"description": "A new configuration for launching and debugging a godot-rust Release executable",
 						"body": {
 							"name": "Release Game",
-							"preLaunchTask": "Build Release",
+							"preLaunchTask": "godot-rust: Build Release",
 							"type": "lldb",
 							"request": "launch",
 							"program": "${config:godot-rust.environment.godotEditorPath}",
@@ -122,7 +131,7 @@
 						}
 					},
 					{
-						"label": "godot-rust: Attach to Debug Configuration",
+						"label": "godot-rust: Attach to Debug Game",
 						"description": "A new configuration for attaching to a running godot-rust executable",
 						"body": {
 							"name": "Attach to Game",
@@ -130,10 +139,7 @@
 							"type": "lldb",
 							"request": "attach",
 							"program": "${config:godot-rust.environment.godotEditorPath}",
-							"port": 6007,
-							"presentation": {
-								"group": "Attach"
-							}
+							"port": 6007
 						}
 					}
 				]
