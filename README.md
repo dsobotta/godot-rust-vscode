@@ -20,7 +20,7 @@
 2. Install vscode extensions for best results **( Ctrl+Shift+P )**
     - `ext install matklad.rust-analyzer`
     - `ext install vadimcn.vscode-lldb`
-    - `ext install dsobotta.godot-rust`
+    - `ext install dsobotta.godot-rust-vscode`
 3. File **->** Open Folder **->** path-to-your-template-rust-directory
 4. Generate project files **( Ctrl+Shift+P )**
     - `>godot-rust: Generate Project Files`
