@@ -16,7 +16,7 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"configuration": {
-			"title": "Godot-Rust",
+			"title": "godot-rust",
 			"properties": {
 				"godot-rust.environment.godotEditorPath": {
 					"description": "The absolute path to the Godot Editor, including executable name",
@@ -147,8 +147,8 @@
 		],
 		"commands": [
 			{
-				"command": "godot-rust-vscode.helloWorld",
-				"title": "Hello World"
+				"command": "godot-rust.generateProjectFiles",
+				"title": "godot-rust: Generate Project Files"
 			}
 		]
 	},
