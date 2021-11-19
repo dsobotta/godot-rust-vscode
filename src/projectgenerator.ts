@@ -2,9 +2,8 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from "fs";
 
-interface CopyConfig {
+interface ExtensionCopyConfig {
     context: vscode.ExtensionContext;
-    workspace: string;
     src: string;
     dest: string;
 }
@@ -17,17 +16,15 @@ export class GodotRustProjectGenerator {
             return false;
         }
 
-        let tasksConfig: CopyConfig = {
+        let tasksConfig: ExtensionCopyConfig = {
             context: context,
-            workspace: workspacePath,
-            src: path.join('templates', 'tasks.json'),
+            src: path.join('data', 'tasks.json'),
             dest: path.join(workspacePath, '.vscode/tasks.json')
         };
 
-        let launchConfig: CopyConfig = {
+        let launchConfig: ExtensionCopyConfig = {
             context: context,
-            workspace: workspacePath,
-            src: path.join('templates', 'launch.json'),
+            src: path.join('data', 'launch.json'),
             dest: path.join(workspacePath, '.vscode/launch.json')
         };
 
@@ -42,9 +39,9 @@ export class GodotRustProjectGenerator {
         return true;
     }
 
-    private static copyFromExtension(copyConfig: CopyConfig): boolean {
+    private static copyFromExtension(copyConfig: ExtensionCopyConfig): boolean {
 
-        if (copyConfig.context === undefined || copyConfig.workspace === undefined) {
+        if (copyConfig.context === undefined) {
             return false;
         }
 

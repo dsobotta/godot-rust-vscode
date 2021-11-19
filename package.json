@@ -19,7 +19,7 @@
 			"title": "godot-rust",
 			"properties": {
 				"godot-rust.environment.godotEditorPath": {
-					"description": "The absolute path to the Godot Editor, including executable name",
+					"description": "The path to the Godot Editor, including executable name. Both relative and absolute paths are accepted",
 					"type": "string",
 					"default": "C:/Godot/godot"
 				},

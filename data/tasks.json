@@ -48,7 +48,7 @@
 		},
 		{
 			"label": "godot-rust: Clean",
-			"detail": "Removes all artifacts of rust game library its dependencies",
+			"detail": "Removes all artifacts of rust game library and its dependencies",
 			"type": "shell",
 			"options": {
 				"cwd": "${config:godot-rust.environment.makefilePath}"

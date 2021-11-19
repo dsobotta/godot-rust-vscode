@@ -1,70 +1,63 @@
-# godot-rust-vscode README
+## godot-rust
 
-This is the README for your extension "godot-rust-vscode". After writing up a brief description, we recommend including the following sections.
+|  |  |
+| --- | --- |
+| ![feature X](https://avatars.githubusercontent.com/u/66136469?s=128&v=4) | Extends the functionality provided by [godot-rust](https://godot-rust.github.io/) bindings, with enhanced configuration, workflow, and debugging support |
 
+#
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Streamlines initial godot-rust setup for development with vscode
+- Synchronizes environment variables across multiple build targets and launchers
+- Supports native debugging of godot-rust applications with the usual breakpoints, variable inspection, etc. that one would expect from vanilla rust development
+- Minimizes context switching by supporting the entire edit->build->launch->debug workflow within vscode
+- Compatible with the [godot-tools](https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools) extension for additional GDScript language and debugging support
+  
+#
+## Setup
 
-For example if there is an image subfolder under your extension project workspace:
+1. Follow the godot-rust [getting started](https://godot-rust.github.io/book/getting-started/setup.html) tutorial, and generate a template project
+2. Install vscode extensions for best results **( Ctrl+Shift+P )**
+    - `ext install matklad.rust-analyzer`
+    - `ext install vadimcn.vscode-lldb`
+    - `ext install dsobotta.godot-rust`
+3. File **->** Open Folder **->** path-to-your-template-rust-directory
+4. Generate project files **( Ctrl+Shift+P )**
+    - `>godot-rust: Generate Project Files`
+5. Configure godot-rust-vscode settings **( Ctrl+, )**
+    - Filter for `godot-rust`
+    - Adjust the `godotEditorPath` and `targetPlatform` settings accordingly
+6. Build and debug! **( F5 )**
 
-\!\[feature X\]\(images/feature-x.png\)
+#
+## Usage
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Settings **( Ctrl+, )**
+    - `godot-rust.environment.godotEditorPath` - Sets the absolute path to the Godot Editor
+    - `godot-rust.environment.godotProjectPath` - Sets the path to the Godot project directory
+    - `godot-rust.environment.makefilePath` - Sets the path to the godot-rust makefile directory
+    - `godot-rust.build.targetPlatform` - Enum to set the target platform for this development environment
+    - `godot-rust.build.targetPlatformCustom` - Specifies the custom platform, when targetPlatform is set to 'custom'
+- Generate Project Files **( Ctrl+Shift+P )
+    - `>godot-rust: Generate Project Files` - Populates the tasks.json and launch.json configuration files. 
+        >**WARNING - This will clobber existing configurations!**
+- Build **( Ctrl+Shift+B )**
+    - `godot-rust: Clean` - Removes all artifacts of rust game library and its dependencies
+    - `godot-rust: Build Debug` - Builds debug rust game library
+    - `godot-rust: Build Release` - Builds release rust game library
+    - `godot-rust: Lauch Debug Editor` - Builds debug rust game library, then opens the project with Godot Editor
+    - `godot-rust: Launch Release Editor` - Builds release rust game library, then opens the project with Godot Editor
+- Debug **( F5 )**
+    - `'Debug Game'` - Builds, launches, and begins debugging a *debug* game process
+    - `'Release Game'` - Builds, launches, and begins debugging a *release* game process
+    - `'Attach to Game'` - Attaches to and begins debugging an *existing* game process. Useful for debugging a game process launched from the Godot Editor
 
-## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
+#
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- The project generation offered by this extension **clobbers existing tasks.json and launch.json** configurations. Use at your own risk!
+- Project files are not initially configured for cross-compiling or automation, but can be supported by end-users via [custom tasks](https://code.visualstudio.com/docs/editor/tasks#_custom-tasks)
+- While there's compatibility with most features in [godot-tools](https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools), each extension brings their own debugger support. Be prepared for some cludgy interactions if you're attempting to debug both rust and GDScript simultaneously
+- Not yet tested on OSX
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
