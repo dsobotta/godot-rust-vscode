@@ -1,4 +1,4 @@
-## godot-rust
+## godot-rust-vscode
 
 |  |  |
 | --- | --- |
