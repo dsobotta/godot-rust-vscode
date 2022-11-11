@@ -7,7 +7,7 @@
 #
 ## Features
 
-- Streamlines initial godot-rust setup for development with vscode
+- Streamlines godot-rust setup for development with vscode
 - Synchronizes environment variables across multiple build targets and launchers
 - Supports native debugging of godot-rust applications with the usual breakpoints, variable inspection, etc. that one would expect from vanilla rust development
 - Minimizes context switching by supporting the entire edit->build->launch->debug workflow within vscode
@@ -26,18 +26,15 @@
     - `>godot-rust: Generate Project Files`
 5. Configure godot-rust-vscode settings **( Ctrl+, )**
     - Filter for `godot-rust`
-    - Adjust the `godotEditorPath` and `targetPlatform` settings accordingly
+    - Adjust the `godotEditorPath` and `godotProjectPath` settings accordingly
 6. Build and debug! **( F5 )**
 
 #
 ## Usage
 
 - Settings **( Ctrl+, )**
-    - `godot-rust.environment.godotEditorPath` - Sets the absolute path to the Godot Editor
+    - `godot-rust.environment.godotEditorPath` - Sets the path to the Godot Editor
     - `godot-rust.environment.godotProjectPath` - Sets the path to the Godot project directory
-    - `godot-rust.environment.makefilePath` - Sets the path to the godot-rust makefile directory
-    - `godot-rust.build.targetPlatform` - Enum to set the target platform for this development environment
-    - `godot-rust.build.targetPlatformCustom` - Specifies the custom platform, when targetPlatform is set to 'custom'
 - Generate Project Files **( Ctrl+Shift+P )
     - `>godot-rust: Generate Project Files` - Populates the tasks.json and launch.json configuration files. 
         >**WARNING - This will clobber existing configurations!**

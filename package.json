@@ -2,7 +2,7 @@
 	"name": "godot-rust-vscode",
 	"displayName": "godot-rust-vscode",
 	"description": "godot-rust development tools for vscode",
-	"version": "0.0.1",
+	"version": "0.4.1",
 	"publisher": "dsobotta",
 	"author": {
 		"name": "dsobotta",
@@ -40,44 +40,15 @@
 		"configuration": {
 			"title": "godot-rust",
 			"properties": {
-				"godot-rust.environment.godotEditorPath": {
-					"description": "The path to the Godot Editor, including executable name. Both relative and absolute paths are accepted",
-					"type": "string",
-					"default": "C:/Godot/godot"
-				},
 				"godot-rust.environment.godotProjectPath": {
 					"description": "The path to the Godot project directory. Both relative and absolute paths are accepted",
 					"type": "string",
 					"default": "${workspaceFolder}/../godot/"
 				},
-				"godot-rust.environment.makefilePath": {
-					"description": "The path to the godot-rust makefile directory. Both relative and absolute paths are accepted",
+				"godot-rust.environment.godotEditorPath": {
+					"description": "The path to the Godot Editor, including executable name. Both relative and absolute paths are accepted",
 					"type": "string",
-					"default": "${workspaceFolder}/../"
-				},
-				"godot-rust.build.targetPlatform": {
-					"description": "The target platform for this development environment",
-					"type": "string",
-					"default": "x86_64-pc-windows-msvc",
-					"enum": [
-						"x86_64-pc-windows-msvc",
-						"x86_64-pc-windows-gnu",
-						"x86_64-unknown-linux-gnu",
-						"x86_64-apple-darwin",
-						"custom"
-					],
-					"enumDescriptions": [
-						"Suitable for a typical Windows + MSVC setup",
-						"Alternative Windows target when MinGW is used",
-						"Default configuration for Linux",
-						"Default configuration for OSX",
-						"Manually specify the target platform with godot-rust.build.targetPlatformCustom"
-					]
-				},
-				"godot-rust.build.targetPlatformCustom": {
-					"description": "Target platform, when godot-rust.build.targetPlatform is set to 'custom'",
-					"type": "string",
-					"default": ""
+					"default": "C:/Godot/godot"
 				}
 			}
 		},
@@ -196,6 +167,6 @@
 		"typescript": "^4.4.4"
 	},
 	"dependencies": {
-		"vsce": "^2.3.0"
+		"vsce": "^2.14.0"
 	}
 }

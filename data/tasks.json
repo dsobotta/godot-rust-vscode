@@ -25,35 +25,26 @@
 			"group": "build"
 		},
 
-		//Makefile Operations
+		//Build Operations
 		{
 			"label": "godot-rust: Build Debug",
 			"detail": "Builds debug rust game library",
 			"type": "shell",
-			"options": {
-				"cwd": "${config:godot-rust.environment.makefilePath}"
-			},
-			"command": "make build-${config:godot-rust.build.targetPlatform}-debug",
+			"command": "cargo build",
 			"group": "build"
 		},
 		{
 			"label": "godot-rust: Build Release",
 			"detail": "Builds release rust game library",
 			"type": "shell",
-			"options": {
-				"cwd": "${config:godot-rust.environment.makefilePath}"
-			},
-			"command": "make build-${config:godot-rust.build.targetPlatform}-release",
+			"command": "cargo build --release",
 			"group": "build"
 		},
 		{
 			"label": "godot-rust: Clean",
 			"detail": "Removes all artifacts of rust game library and its dependencies",
 			"type": "shell",
-			"options": {
-				"cwd": "${config:godot-rust.environment.makefilePath}"
-			},
-			"command": "make clean",
+			"command": "cargo clean",
 			"group": "build"
 		}
 	]
